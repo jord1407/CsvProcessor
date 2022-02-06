@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Authors>Jordan Min Kive</Authors>
+    <Description>A helpful tool to
+- Convert CSV to class object
+- Convert CSV to DataTable
+- Convert Class object to a CSV format</Description>
+    <NeutralLanguage>en-IO</NeutralLanguage>
+  </PropertyGroup>
+
+</Project>
