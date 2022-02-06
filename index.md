@@ -13,6 +13,6 @@ CSV Processor is a library that allows the processing CSV files.
 
 CSV Processor is open source under the MIT license and is free for commercial use.
 
-Thanks
+### Thanks
 
 Thanks to Shayl Sawmynaden for pitching the idea.
