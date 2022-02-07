@@ -8,6 +8,17 @@
 - Convert CSV to DataTable
 - Convert Class object to a CSV format</Description>
     <NeutralLanguage>en-IO</NeutralLanguage>
+    <PackageProjectUrl>https://jord1407.github.io/CsvProcessor/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/jord1407/CsvProcessor</RepositoryUrl>
+    <PackageTags>csv-reader; csv-writter</PackageTags>
+    <FileVersion>1.0.0.1</FileVersion>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <Version>1.0.1</Version>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
 
 </Project>
