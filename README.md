@@ -41,13 +41,11 @@ _Note that `FileType` could be any enumerables that you have set in your project
 #### Usage
 
 There are 3 ways to use treat a CSV file with the CsvProcessor
-- Converting the file to a IEnumerable of .NET Object.
+- Converting the file to an IEnumerable of .NET Object.
 - Converting the file to a DataTable.
 - Defining a custom processor.
 
-A List of .NET Object can also be converted to a CSV
-
-##### Converting the file to a List of .NET Object
+##### Converting the file to  an IEnumerable of .NET Object
 
 Step 1: Defining the DataModel _(Example will be using an ISO standard CSV)_
 
