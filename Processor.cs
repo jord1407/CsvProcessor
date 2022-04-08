@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace CsvProcessor.Processors
@@ -31,25 +32,39 @@ namespace CsvProcessor.Processors
 
         #region Public Methods
 
-        public void Execute()
+        public void Execute(bool header = false)
         {
-            DataTable dt = ToDataTable();
+            DataTable dt = ToDataTable(header);
             _processor?.Process(dt);
         }
 
-        public IEnumerable<S> Execute<S>() where S : class
+        public IEnumerable<S> Execute<S>(bool header = false) where S : class
         {
-            DataTable dt = ToDataTable();
+            DataTable dt = ToDataTable(header);
             List<S> list = new List<S>();
 
             foreach (DataRow row in dt.Rows)
             {
                 S item = (S)Activator.CreateInstance(typeof(S));
 
-                foreach(var property in item.GetType().GetProperties())
+                if (!header)
                 {
-                    var index = ((CsvAttribute)property.GetCustomAttributes(typeof(CsvAttribute), false)[0]).Position;
-                    property.SetValue(item, Convert.ChangeType(row[$"Column{index}"], property.PropertyType));
+
+                    foreach (var property in item.GetType().GetProperties())
+                    {
+                        var index = ((CsvAttribute)property.GetCustomAttributes(typeof(CsvAttribute), false)[0]).Position;
+                        property.SetValue(item, Convert.ChangeType(row[$"Column{index}"], property.PropertyType));
+                    }
+                }
+                else
+                {
+                    string[] columns = _contents?[0].Replace("\"", string.Empty).Trim().Split(',');
+
+                    foreach (var property in item.GetType().GetProperties())
+                    {
+                        var index = ((CsvAttribute)property.GetCustomAttributes(typeof(CsvAttribute), false)[0]).Position;
+                        property.SetValue(item, Convert.ChangeType(row[columns[Convert.ToInt32(index)]], property.PropertyType));
+                    }
                 }
 
                 list.Add(item);
@@ -89,7 +104,15 @@ namespace CsvProcessor.Processors
 
         #region Private Methods
 
-        private DataTable ToDataTable()
+        private DataTable ToDataTable(bool header = false)
+        {
+            if (!header)
+                return ToDataTableWithoutHeader();
+            else
+                return ToDataTableWithHeader();
+        }
+
+        private DataTable ToDataTableWithoutHeader()
         {
             DataTable dt = new DataTable();
             
@@ -109,6 +132,36 @@ namespace CsvProcessor.Processors
                 foreach (string column in line.Split(_seperator))
                 {
                     dr[$"Column{index++}"] = column.Trim();
+                }
+
+                dt.Rows.Add(dr);
+            }
+
+            return dt;
+        }
+
+        private DataTable ToDataTableWithHeader()
+        {
+            DataTable dt = new DataTable();
+
+            int index = 0;
+            string[] columns = _contents?[0].Replace("\"", string.Empty).Trim().Split(',');
+
+            foreach (string column in columns)
+            {
+                dt.Columns.Add(column);
+            }
+
+            string[] contents = _contents?.Skip(1).ToArray();
+
+            foreach (string line in contents)
+            {
+                DataRow dr = dt.NewRow();
+                index = 0;
+
+                foreach (string column in line.Split(_seperator))
+                {
+                    dr[columns[index++]] = column.Trim();
                 }
 
                 dt.Rows.Add(dr);
