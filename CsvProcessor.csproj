@@ -1,35 +1,44 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Authors>Jordan Min Kive</Authors>
-    <Description>A helpful tool to
-- Convert CSV to class object
-- Convert CSV to DataTable
-- Convert Class object to a CSV format</Description>
-    <NeutralLanguage>en-IO</NeutralLanguage>
-    <PackageProjectUrl>https://jord1407.github.io/CsvProcessor/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/jord1407/CsvProcessor</RepositoryUrl>
-    <PackageTags>csv-reader; csv-writter</PackageTags>
-    <FileVersion>1.0.0.2</FileVersion>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.0.2</AssemblyVersion>
-    <Version>1.0.2.1</Version>
-    <PackageReleaseNotes>Support for CSV files with header</PackageReleaseNotes>
-    <PackageLicenseFile>C:\Users\GAMING\source\repos\CSV Processor\LICENSE</PackageLicenseFile>
-    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<Authors>Jordan Min Kive</Authors>
+		<Description>
+			A helpful tool to
+			- Convert CSV to class object
+			- Convert CSV to DataTable
+			- Convert Class object to a CSV format
+		</Description>
+		<NeutralLanguage>en-IO</NeutralLanguage>
+		<PackageProjectUrl>https://jord1407.github.io/CsvProcessor/</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/jord1407/CsvProcessor</RepositoryUrl>
+		<PackageTags>csv-reader; csv-writter</PackageTags>
+		<FileVersion>1.0.0.2</FileVersion>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<AssemblyVersion>1.0.0.2</AssemblyVersion>
+		<Version>1.0.2.1</Version>
+		<PackageReleaseNotes>Support for CSV files with header</PackageReleaseNotes>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="Properties\" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\CSV Processor\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\CSV Processor\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\CSV Processor\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 
 </Project>
