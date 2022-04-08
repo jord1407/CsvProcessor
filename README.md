@@ -45,7 +45,7 @@ There are 3 ways to use treat a CSV file with the CsvProcessor
 - Converting the file to a DataTable.
 - Defining a custom processor.
 
-##### Converting the file to  an IEnumerable of .NET Object
+##### Converting the file to an IEnumerable of .NET Object
 
 Step 1: Defining the DataModel _(Example will be using an ISO standard CSV)_
 
@@ -93,6 +93,7 @@ Processor<FileTypes> processor = new Processor<FileTypes>(path, FileTypes.Countr
 DataTable dt = processor.GetContentAsDataTable();
 ```
 
+
 ##### Defining a custom processor
 
 Step 1: Defining the custom processor by inheriting the interface `IProcessor` which will automatically convert the file into a DataTable and will append `Column` with the column `Index`. For example, the first column in the file will be named `Column0`.
@@ -113,6 +114,50 @@ public class CountryProcessor : IProcessor
           NumericalCode = Convert.ToInt32(row["Column3"].ToString()),
           Latitude = Convert.ToDouble(row["Column4"].ToString()),
           Longitude = Convert.ToDouble(row["Column5"].ToString())
+      };
+    }
+  }
+}
+```
+
+Step 2: Processing the file
+
+```csharp
+string path = "[CSV File Directory]";
+
+FileTypeInit.FileTypes.Add(FileTypes.Countries, new CountryProcessor());
+
+Processor<FileTypes> processor = new Processor<FileTypes>(path, FileTypes.Countries);
+processor.Execute();
+```
+
+##### Converting the file with header to a  DataTable
+
+```csharp
+string path = "[CSV File Directory]";
+Processor<FileTypes> processor = new Processor<FileTypes>(path, FileTypes.Countries);
+DataTable dt = processor.GetContentAsDataTable(true);
+
+##### Defining a custom processor for a DataTable with custom Column Names
+
+Step 1: Defining the custom processor by inheriting the interface `IProcessor` which will automatically convert the file into a DataTable and will append `Column` with the column `Index`. For example, the first column in the file will be named `Column0`.
+
+```csharp
+public class CountryProcessor : IProcessor
+{
+  void IProcessor.Process(DataTable dt)
+  {
+    // Processor Logic after DataTable conversion
+    foreach (DataRow row in datatable.Rows)
+    {
+      Country country = new Country()
+      {
+          Name = row["CustomColumnName"].ToString(),
+          AlphaCode2 = row["CustomColumnName"].ToString(),
+          AlphaCode3 = row["CustomColumnName"].ToString(),
+          NumericalCode = Convert.ToInt32(row["CustomColumnName"].ToString()),
+          Latitude = Convert.ToDouble(row["CustomColumnName"].ToString()),
+          Longitude = Convert.ToDouble(row["CustomColumnName"].ToString())
       };
     }
   }

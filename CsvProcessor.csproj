@@ -11,14 +11,25 @@
     <PackageProjectUrl>https://jord1407.github.io/CsvProcessor/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/jord1407/CsvProcessor</RepositoryUrl>
     <PackageTags>csv-reader; csv-writter</PackageTags>
-    <FileVersion>1.0.0.1</FileVersion>
+    <FileVersion>1.0.0.2</FileVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.0.1</AssemblyVersion>
-    <Version>1.0.1</Version>
+    <AssemblyVersion>1.0.0.2</AssemblyVersion>
+    <Version>1.0.2.1</Version>
+    <PackageReleaseNotes>Support for CSV files with header</PackageReleaseNotes>
+    <PackageLicenseFile>C:\Users\GAMING\source\repos\CSV Processor\LICENSE</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\CSV Processor\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
