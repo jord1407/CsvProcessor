@@ -15,6 +15,7 @@
 		<PackageTags>csv-reader; csv-writter</PackageTags>
 		<FileVersion>1.0.0.2</FileVersion>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<GenerateRuntimeConfigurationFiles>True</GenerateRuntimeConfigurationFiles>
 		<AssemblyVersion>1.0.0.2</AssemblyVersion>
 		<Version>1.0.2.1</Version>
 		<PackageReleaseNotes>Support for CSV files with header</PackageReleaseNotes>
@@ -28,14 +29,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="..\CSV Processor\README.md">
+		<None Include="..\CsvProcessor\README.md">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="..\CSV Processor\LICENSE">
+		<None Include="..\CsvProcessor\LICENSE">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
